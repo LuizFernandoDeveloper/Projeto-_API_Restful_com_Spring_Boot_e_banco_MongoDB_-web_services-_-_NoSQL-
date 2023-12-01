@@ -1,5 +1,6 @@
 package com.luiz.mongodb.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,4 +33,12 @@ public class PostService {
 	public  List<Post> findByTitle (String text){
 		return repository.searchTitle(text);
 	}
+	
+
+	public List<Post> fullSearch(String text, Date min, Date max) {
+		max = new Date(max.getTime() + 24 * 60 * 60 * 1000);
+		return repository.fullSearch(text, min, max);
+	}
+	
+	
 }
