@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.luiz.mongodb.domain.Post;
-import com.luiz.mongodb.services.PostService;
+import com.luiz.mongodb.domain.User;
+import com.luiz.mongodb.services.UserService;
 
 @RestController
-@RequestMapping(value = "/posts")
+@RequestMapping(value = "/users")
 public class UserResource {
 	
 	@Autowired
-	private PostService service;
+	private UserService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Post>> findAlList(){
-		List<Post> list = service.findAll();
+	public ResponseEntity<List<User>> findAlList(){
+		List<User> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value ="/{id}")
-	public ResponseEntity<Post> findById(@PathVariable String id){
-		Post post = service.findById(id);
-		return ResponseEntity.ok().body(post);
+	public ResponseEntity<User> findById(@PathVariable String id){
+		User user = service.findById(id);
+		return ResponseEntity.ok().body(user);
 	}
 }
